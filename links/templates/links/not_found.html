@@ -1,0 +1,11 @@
+{% extends "links/base.html" %}
+{% block title %}Not Found{% endblock %}
+{% block content %}
+<div class="text-center mt-20">
+    <h1 class="text-5xl font-bold text-red-500">404</h1>
+    <p class="text-lg text-gray-700">The link <code>{{ code }}</code> does not exist or is inactive.</p>
+    <a href="{% url 'links:home' %}" class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
+        Go Home
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "links/base.html" %}
+{% block title %}Link Details{% endblock %}
+{% block content %}
+<div class="bg-white p-6 rounded-lg shadow-md max-w-lg mx-auto">
+    <h1 class="text-xl font-bold mb-4">Short Link Details</h1>
+    <p class="mb-2">
+        <strong>Short URL:</strong>
+        <a href="{{ short_link }}" class="text-blue-600 underline" target="_blank">{{ short_link }}</a>
+    </p>
+    <p class="mb-2">
+        <strong>Original URL:</strong>
+        <a href="{{ u.original_url }}" class="text-gray-700 underline" target="_blank">{{ u.original_url }}</a>
+    </p>
+    <p class="mb-2"><strong>Clicks:</strong> {{ u.clicks }}</p>
+    <p class="mb-2"><strong>Created:</strong> {{ u.created_at|date:"Y-m-d H:i" }}</p>
+    {% if u.last_accessed %}
+    <p class="mb-2"><strong>Last Accessed:</strong> {{ u.last_accessed|date:"Y-m-d H:i" }}</p>
+    {% endif %}
+    <div class="mt-4">
+        <strong>QR Code:</strong>
+        <img src="{% url 'links:qr_code' u.short_code %}" alt="QR Code" class="mt-2 w-32 h-32">
+    </div>
+</div>
+{% endblock %}
